@@ -18,7 +18,7 @@
     text-align: left;
     padding: 2rem;
     border-radius: 1rem;
-    margin: 0 1rem 1rem 0;
+    margin: 1rem;
 }
 .servicesCatalog h1{
     font-size: 20px;
@@ -46,8 +46,10 @@
 }
 @media only screen and (max-width: 900px){
     .services{
-        display: flex;
+        grid-template-columns: 1fr;
+        margin: 1rem;
     }
+   
     .servicesCatalog{
         display: grid;
         grid-template-columns: repeat(2,1fr);
@@ -60,7 +62,7 @@
         text-align: left;
         padding: 2rem;
         border-radius: 1rem;
-        margin: 0 1rem 1rem 0;
+        margin:  1rem ;
     }
     .servicesCatalog h1{
         font-size: 20px;
@@ -70,10 +72,8 @@
     }
 } 
 @media only screen and (max-width: 756px){
-    .servicesCatalog{
-        display: grid;
-        grid-template-columns: repeat(2,1fr);
-    }
+   
+    
     .servicesCatalog h1{
         font-size: 20px;
     }
@@ -82,10 +82,7 @@
     }
 } 
  @media only screen and (max-width: 600px){
-    .services{
-        display: flex;
-        /* grid-template-columns: repeat(2,1fr); */
-    }
+ 
     .servicesCatalog{
         display: grid;
         grid-template-columns: repeat(2,1fr);
@@ -96,13 +93,7 @@
     .servicesImage img{
         width: 350px;
     }
-    .servicesCatalog div{
-        border:1px solid  rgba(37, 145, 253, 1);
-        text-align: left;
-        padding: 2rem;
-        border-radius: 1rem;
-        margin: 0 1rem 1rem 0;
-    }
+   
     .servicesCatalog h1{
         font-size: 15px;
     }
@@ -134,7 +125,7 @@
         text-align: left;
         /* padding: 2rem; */
         border-radius: 1rem;
-        margin: 0 1rem 1rem 0;
+        margin:  1rem ;
     }
     .servicesCatalog h1{
         font-size: 20px;

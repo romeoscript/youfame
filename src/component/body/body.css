@@ -83,12 +83,13 @@
     flex-direction: column-reverse;
   }
   .youtubetext {
-    padding: 2rem 3rem;
+    padding: 2rem 1rem;
     text-align: center;
   }
   .youtubetext h2 {
+    text-align: center;
     padding: 0.2rem 0;
-    font-size: 15px;
+    font-size: 25px;
     letter-spacing: 0.02em;
   }
   .youtubetext p {
@@ -123,21 +124,23 @@
 }
 @media only screen and (max-width: 600px) {
   .youtubetext {
-    padding: 2rem 3rem;
+    padding: 2rem 1rem;
     text-align: center;
   }
   .youtubetext h2 {
     padding: 0.2rem 0;
-    font-size: 15px;
+    /* font-size: 15px; */
     letter-spacing: 0.02em;
   }
   .youtubeimage img {
-    width: 250px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
   }
   .whyUs {
     display: block;
     text-align: center;
-    margin: 5rem;
+    margin: 1rem;
   }
   .whyUs div {
     margin: 2rem 0.5rem;
