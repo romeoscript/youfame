@@ -6,7 +6,7 @@
 }
 .container {
   background-color: rgba(37, 145, 253, 1);
-  height: 100vh;
+  height: 90vh;
 }
 .menu {
   display: flex;
@@ -187,7 +187,7 @@
 }
 
 aside {
-    width: 70%;
+    width: 60%;
     margin: auto;
     border-radius: 10px;
     border: 2px solid red;
@@ -199,6 +199,7 @@ aside {
     background-color: white;
     color: black!important;
     padding: 0.5rem;
+    justify-content: space-between;
     /* align-items: center; */
   }
   aside img {

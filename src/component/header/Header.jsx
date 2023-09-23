@@ -54,14 +54,18 @@ export default function Header() {
                     <h2>Order Here</h2>
                     <img src="icons/arrow.png" alt="" />
                     <input type="text" value={link}
-                      
-                        onChange={(e) => setLink(e.target.value)} placeholder='Search video or paste link (youtube.com/watch? =xyz' />
+
+                        onChange={(e) => {
+                            setLink(e.target.value);
+                            fetchVideoDetails();
+                        }}
+                        placeholder='Search video or paste link (youtube.com/watch? =xyz' />
                     <button className='start' onClick={fetchVideoDetails}>START</button>
                     {videoDetails && <aside>
-                        <img src={videoDetails ? videoDetails.thumbnails.default.url : logo} alt="" />
+                        <img src={videoDetails.thumbnails.default.url } alt="" />
                         <div>
-                            <h2>{videoDetails ? videoDetails.title : "ROMeo script tis a nigerian and he loves his onions"}</h2>
-                            <p>{videoDetails ? (videoDetails.description.length > 100 ? videoDetails.description.substring(0, 100) + "..." : videoDetails.description) : "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, rem animi laboriosam possimus, voluptate est maxime quibusdam iusto maiores similique alias dolor placeat tempora nulla, suscipit veritatis itaque nesciunt! Facilis!"}</p>
+                            <h2>{videoDetails.title }</h2>
+                            <p>{(videoDetails.description.length > 100 ? videoDetails.description.substring(0, 100) + "..." : videoDetails.description)}</p>
                         </div>
                     </aside>
                     }
