@@ -242,11 +242,7 @@ aside div h2 {
   text-align: left !important;
   font-weight: 100 !important;
 }
-@media (max-width: 550px) {
-  aside img {
-    display: none;
-  }
-}
+
 
 .image_father{
   width: 70%;
@@ -285,4 +281,41 @@ aside div h2 {
   display: flex;
   align-items: center ;
   justify-content: space-between;
+}
+
+@media (max-width: 550px) {
+  aside{
+    width: 90%;
+    display: block;
+  }
+  aside div{
+    width: 100%;
+    font-size: 12px;
+  }
+  aside div h2{
+    font-size: 12px!important;
+  }
+  aside div p{
+    width: 100%;
+    font-size: 9px!important;
+  }
+  aside img {
+    display: none!important;
+  }
+  .image_father{
+    width: 100%;
+    padding: 0;
+  }
+  .image{
+    height: 100px;
+  }
+  .vid_title, .modal_details{
+    font-size: 12px;
+  }
+ figure div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+ }
 }

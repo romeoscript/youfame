@@ -10,20 +10,23 @@ import CreditCardIcon from '@mui/icons-material/CreditCard';
 import PaidIcon from '@mui/icons-material/Paid';
 import Stack from '@mui/material/Stack';
 import './header.css'
-import service from '../../../public/icons/services.png'
 
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: '50%',
-    borderRadius: '10px',
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
+
+const modalStyle = () => {
+    const width = window.innerWidth < 768 ? '90%' : '50%';
+    return {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: width,
+        borderRadius: '10px',
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 2,
+    }
 };
 
 
@@ -104,9 +107,9 @@ export default function TransitionsModal({ setInfo, video }) {
                 }}
             >
                 <Fade in={open}>
-                    <Box sx={style}>
+                    <Box sx={modalStyle()}>
                         <div className='image_father'>
-                            <p>{video?.title}</p>
+                            <p className='vid_title'>{video?.title}</p>
                             <span>by {video?.channelTitle}</span>
                             <img src={video?.thumbnails.high.url} alt="" className='image' />
                         </div>
@@ -155,14 +158,14 @@ export default function TransitionsModal({ setInfo, video }) {
                         <h2 className='modal_details'>You will receive <span>{data.viewsSlider}</span> views, <span>{data.likesSlider}</span> likes, and <span>{data.subscribersSlider}</span> subscribers</h2>
                         <figure>
                             <h3>TOTAL= $15</h3>
-                            <Stack direction="row" spacing={2}>
-                                <Button variant="outlined" startIcon={<CreditCardIcon />}>
+                            <div >
+                                <Button variant="outlined" sx={{margin:'0.5rem 1rem'}} startIcon={<CreditCardIcon />}>
                                     Credit Card
                                 </Button>
                                 <Button variant="contained" startIcon={<PaidIcon />}>
                                     Cryptocurrency
                                 </Button>
-                            </Stack>
+                            </div>
                         </figure>
                     </Box>
 
