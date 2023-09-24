@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
-      external: ['@mui/material/Skeleton']
+      external: ['@mui/material/Skeleton', '@mui/material/Backdrop']
     }
   }
 });
