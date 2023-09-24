@@ -7,12 +7,18 @@
 .container {
   background-color: rgba(37, 145, 253, 1);
   height: 90vh;
+  padding: 1rem;
 }
 .menu {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+  position: fixed;
+  width: 100%;
+  background: rgba(37, 145, 253, 1);
+  left: 0;
+  top: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 1);
 }
 .menu h1 {
@@ -36,7 +42,14 @@
 .menuheader {
   align-items: center;
   text-align: center;
-  margin: 5rem 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.input_container {
+  width: 100%;
 }
 .menuheader h2 {
   color: rgba(255, 255, 255, 1);
@@ -63,15 +76,17 @@
   border: 1px solid rgba(22, 74, 121, 1);
   background: transparent;
   outline: none;
-  width: 40%;
+  width: 50%;
   border-style: dashed;
-  /* border-radius: 10px; */
+  color: aliceblue;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
-/* .menuheader input::placeholder{
-    font-size: 8px;
-} */
+.menuheader input::placeholder {
+  font-size: 8px;
+  color: aliceblue;
+  font-size: 17px;
+}
 .start {
   border-style: dotted;
   border: 1px solid rgba(22, 74, 121, 1);
@@ -187,42 +202,87 @@
 }
 
 aside {
-    width: 60%;
-    margin: auto;
-    border-radius: 10px;
-    border: 2px solid red;
-    height: 80px;
-    display: flex;
-    font-weight: 100;
-    gap: 2%;
-    overflow: hidden;
-    background-color: white;
-    color: black!important;
-    padding: 0.5rem;
-    justify-content: space-between;
-    /* align-items: center; */
-  }
+  width: 60%;
+  margin: auto;
+  border-radius: 10px;
+  -webkit-box-shadow: -4px 2px 18px 16px rgba(214, 207, 214, 1);
+  -moz-box-shadow: -4px 2px 18px 16px rgba(214, 207, 214, 1);
+  box-shadow: -4px 2px 18px 16px rgba(214, 207, 214, 1);
+  cursor: pointer;
+  height: 80px;
+  display: flex;
+  font-weight: 100;
+  gap: 2%;
+  overflow: hidden;
+  background-color: white;
+  color: black !important;
+  padding: 0.5rem;
+  justify-content: space-between;
+  /* align-items: center; */
+}
+aside img {
+  width: 200px;
+  object-fit: cover;
+  padding: 0 !important;
+  border-radius: 10px;
+}
+aside div {
+  width: 80%;
+}
+aside div p {
+  font-size: 12px !important;
+  text-align: left !important;
+  color: black !important;
+  font-weight: 100 !important;
+}
+aside div h2 {
+  font-size: 15px !important;
+  color: black !important;
+  margin-bottom: 0.5rem;
+  text-align: left !important;
+  font-weight: 100 !important;
+}
+@media (max-width: 550px) {
   aside img {
-    width: 200px;
-    object-fit: cover;
-    padding: 0!important;
-    border-radius: 10px;
+    display: none;
   }
-  aside div p {
-    font-size: 12px!important;
-    text-align: left!important;
-    color: black!important;
-    font-weight: 100!important;
-  }
-  aside div h2 {
-    font-size: 15px!important;
-    color: black!important;
-    margin-bottom: 0.5rem;
-    text-align: left!important;
-    font-weight: 100!important;
-  }
-  @media (max-width:550px) {
-    aside img {
-        display: none;
-    }
-  }
+}
+
+.image_father{
+  width: 70%;
+  margin: auto;
+  padding: 1rem;
+ 
+}
+.image_father span{
+  font-weight: 100;
+  color: blue;
+  font-size: 14px;
+}
+.image{
+  width: 100%;
+  border-radius: 10px;
+  height: 250px;
+  object-fit: cover;
+}
+.modal_details{
+  font-weight: bold;
+  font-size: 15px;
+}
+.modal_details span{
+ 
+  color: blue!important;
+
+}
+ figure{
+ display: flex;
+  align-items: center ;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3%;
+}
+.view_Info{
+  display: flex;
+  align-items: center ;
+  justify-content: space-between;
+}
