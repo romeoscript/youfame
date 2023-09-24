@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './header.css';
 import logo from '../../assets/react.svg';
 import TransitionsModal from './Modal';
 import Skeleton from '@mui/material/Skeleton';
+import { motion, useAnimation, useInView } from 'framer-motion';
 
 export default function Header() {
     const [link, setLink] = useState('');
@@ -10,6 +11,14 @@ export default function Header() {
     const [info, setInfo] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const ref = useRef()
+    const isInView = useInView(ref)
+
+    const mainControls = useAnimation();
+
+    useEffect(() => {
+        mainControls.start('visible');
+    }, [mainControls]);
 
     const extractVideoID = (url) => {
         const videoIDPattern = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/|youtube\.com\/shorts\/)([^"&?\/ ]{11})/i;
@@ -52,20 +61,56 @@ export default function Header() {
         }
     }, [link]);
 
+    const slideIn = {
+        hidden: { opacity: 0, y: -75 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.25 } }
+    };
+
     return (
         <div className='container'>
             <nav className='menu'>
                 <div className="logo">
-                    <h1>YouFame</h1>
+                    <motion.h1
+                        variants={slideIn}
+                        initial="hidden"
+                        animate={mainControls}
+                    >
+                        YouFame
+                    </motion.h1>
                 </div>
                 <div className='menulist'>
-                    <p>Home</p>
-                    <p>How It Works</p>
+                    <motion.p
+                        variants={slideIn}
+                        initial="hidden"
+                        animate={mainControls}
+                    >
+                        Home
+                    </motion.p>
+                    <motion.p
+                        variants={slideIn}
+                        initial="hidden"
+                        animate={mainControls}
+                    >
+                        How It Works
+                    </motion.p>
                 </div>
             </nav>
             <div className="menuheader">
-                <h1>Top-Quality YouTube Engagement Services</h1>
-                <p>Our offerings go beyond mere views. We provide YouTube subscribers, likes, genuine <br /> comments, and shares to enhance your channel's performance.</p>
+                <motion.h1
+                    variants={slideIn}
+                    initial="hidden"
+                    animate={mainControls}
+                >
+                    Top-Quality YouTube Engagement Services
+                </motion.h1>
+                <motion.p
+                    variants={slideIn}
+                    initial="hidden"
+                    animate={mainControls}
+                >
+                    Our offerings go beyond mere views. We provide YouTube subscribers, likes, genuine <br /> comments, and shares to enhance your channel's performance.
+                </motion.p>
+                
                 <div className='input_container'>
                     <input type="search" value={link}
                         onChange={(e) => {
@@ -76,14 +121,28 @@ export default function Header() {
                         placeholder='Search video or paste link (youtube.com/watch? =xyz' />
                     <button className='start' onClick={fetchVideoDetails}>START</button>
                     {info && <TransitionsModal setInfo={setInfo} video={videoDetails} />}
-                    {videoDetails && <aside onClick={() => setInfo(true)}>
-                        <img src={videoDetails.thumbnails.high.url} alt="" />
-                        <div>
-                            <h2>{videoDetails.title.length > 70 ? videoDetails.title.substring(0, 70) + "..." : videoDetails.title}</h2>
-                            <p>{(videoDetails.description.length > 100 ? videoDetails.description.substring(0, 100) + "..." : videoDetails.description)}</p>
-                        </div>
-                    </aside>
-                    }
+                    {videoDetails && (
+                        <motion.aside
+                            initial="hidden"
+                            animate="visible"
+                            variants={slideIn}
+                            onClick={() => setInfo(true)}
+                        >
+                            <img src={videoDetails.thumbnails.high.url} alt="" />
+                            <div>
+                                <h2>
+                                    {videoDetails.title.length > 70
+                                        ? videoDetails.title.substring(0, 70) + "..."
+                                        : videoDetails.title}
+                                </h2>
+                                <p>
+                                    {videoDetails.description.length > 100
+                                        ? videoDetails.description.substring(0, 100) + "..."
+                                        : videoDetails.description}
+                                </p>
+                            </div>
+                        </motion.aside>
+                    )}
                     {loading && <aside>
                         <Skeleton variant="rounded" width={210} height={60} />
                         <div>

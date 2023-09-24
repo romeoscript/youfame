@@ -16,6 +16,7 @@
   padding: 1rem;
   position: fixed;
   width: 100%;
+  z-index: 100;
   background: rgba(37, 145, 253, 1);
   left: 0;
   top: 0;

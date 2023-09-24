@@ -14,7 +14,7 @@ function App() {
       <Header />
       <Body />
       {/* <Review /> */}
-      <YouTubeLinkFetcher />
+      
       <Services />
       <Footer />
     </div>
