@@ -1,18 +1,19 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import './header.css';
 import logo from '../../assets/react.svg';
+import FormControl from '@mui/material/FormControl';
+import OutlinedInput from '@mui/material/OutlinedInput';
 import TransitionsModal from './Modal';
 import Skeleton from '@mui/material/Skeleton';
-import { motion, useAnimation, useInView } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 
 export default function Header() {
     const [link, setLink] = useState('');
     const [videoDetails, setVideoDetails] = useState(null);
+    const [videos, setVideos] = useState([]);
     const [info, setInfo] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
-    const ref = useRef()
-    const isInView = useInView(ref)
 
     const mainControls = useAnimation();
 
@@ -28,38 +29,32 @@ export default function Header() {
 
     const fetchVideoDetails = () => {
         const videoID = extractVideoID(link);
-        if (!videoID) {
-            setError('Invalid YouTube link.');
-            return;
-        }
+        const apiKey = 'AIzaSyDIf9X3nxHznmwhX1aLDx93_vyB4HAlIus';
+        let apiUrl = '';
 
-        const apiKey = 'AIzaSyDIf9X3nxHznmwhX1aLDx93_vyB4HAlIus'; // Remember to hide or secure API keys in real applications
-        const apiUrl = `https://www.googleapis.com/youtube/v3/videos?id=${videoID}&key=${apiKey}&part=snippet`;
+        if (videoID) {
+            apiUrl = `https://www.googleapis.com/youtube/v3/videos?id=${videoID}&key=${apiKey}&part=snippet`;
+        } else {
+            apiUrl = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&q=${encodeURIComponent(link)}&part=snippet&type=video&maxResults=5`;
+        }
 
         setLoading(true);
         fetch(apiUrl)
             .then(response => response.json())
             .then(data => {
-                if (data.items && data.items.length > 0) {
-                    setVideoDetails(data.items[0].snippet);
-                    setLoading(false);
-                    setError('');  // Clear previous error messages
+                if (videoID) {
+                    setVideos([data.items[0].snippet]);
                 } else {
-                    setError('Video not found.');
-                    setLoading(false);
+                    setVideos(data.items.map(item => item.snippet));
                 }
+                setLoading(false);
+                setError('');
             })
             .catch(() => {
                 setError('Error fetching video details.');
                 setLoading(false);
             });
     };
-
-    useEffect(() => {
-        if (link && (link.includes('youtube.com/watch?') || link.includes('youtube.com/shorts/'))) {
-            fetchVideoDetails();
-        }
-    }, [link]);
 
     const slideIn = {
         hidden: { opacity: 0, y: -75 },
@@ -95,6 +90,7 @@ export default function Header() {
                     </motion.p>
                 </div>
             </nav>
+
             <div className="menuheader">
                 <motion.h1
                     variants={slideIn}
@@ -110,47 +106,62 @@ export default function Header() {
                 >
                     Our offerings go beyond mere views. We provide YouTube subscribers, likes, genuine <br /> comments, and shares to enhance your channel's performance.
                 </motion.p>
-                
+
                 <div className='input_container'>
-                    <input type="search" value={link}
-                        onChange={(e) => {
-                            setVideoDetails(null);
-                            setError('');
-                            setLink(e.target.value);
-                        }}
-                        placeholder='Search video or paste link (youtube.com/watch? =xyz' />
+                    <FormControl sx={{ width: '40%' }}>
+                        <OutlinedInput
+                            placeholder="Search video or paste link (youtube.com/watch? =xyz"
+                            value={link}
+                            onChange={(e) => {
+                                setLink(e.target.value);
+                                if (e.target.value.trim() === '') {
+                                    setVideos([]);
+                                    setVideoDetails(null);
+                                    setLoading(false);
+                                    setError('');
+                                } else {
+                                    fetchVideoDetails();
+                                }
+                            }}
+                        />
+                    </FormControl>
+
                     <button className='start' onClick={fetchVideoDetails}>START</button>
                     {info && <TransitionsModal setInfo={setInfo} video={videoDetails} />}
-                    {videoDetails && (
+                    {videos.map((videoDetail, index) => (
                         <motion.aside
+                            key={index}
                             initial="hidden"
                             animate="visible"
                             variants={slideIn}
-                            onClick={() => setInfo(true)}
+                            onClick={() => {
+                                setVideoDetails(videoDetail);
+                                setInfo(true);
+                            }}
                         >
-                            <img src={videoDetails.thumbnails.high.url} alt="" />
+                            <img src={videoDetail.thumbnails.high.url} alt="" />
                             <div>
                                 <h2>
-                                    {videoDetails.title.length > 70
-                                        ? videoDetails.title.substring(0, 70) + "..."
-                                        : videoDetails.title}
+                                    {videoDetail.title.length > 70
+                                        ? videoDetail.title.substring(0, 70) + "..."
+                                        : videoDetail.title}
                                 </h2>
                                 <p>
-                                    {videoDetails.description.length > 100
-                                        ? videoDetails.description.substring(0, 100) + "..."
-                                        : videoDetails.description}
+                                    {videoDetail.description.length > 100
+                                        ? videoDetail.description.substring(0, 100) + "..."
+                                        : videoDetail.description}
                                 </p>
                             </div>
                         </motion.aside>
-                    )}
+                    ))}
+
                     {loading && <aside>
                         <Skeleton variant="rounded" width={210} height={60} />
                         <div>
                             <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
                             <Skeleton variant="rounded" width={'100%'} height={40} />
                         </div>
-                    </aside>
-                    }
+                    </aside>}
                     {error && <p style={{ color: 'red' }}>{error}</p>}
                 </div>
             </div>

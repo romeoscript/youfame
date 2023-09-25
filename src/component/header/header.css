@@ -5,7 +5,11 @@
   font-family: "Poppins";
 }
 .container {
-  background-color: rgba(37, 145, 253, 1);
+  background: #505ABC url(src/assets/background.svg) no-repeat;
+  background-position: 50% 50%;
+  background-size: auto 100%;
+  color: #fff;
+  /* background-color: #505ABC; */
   height: 90vh;
   padding: 1rem;
 }
@@ -17,7 +21,7 @@
   position: fixed;
   width: 100%;
   z-index: 100;
-  background: rgba(37, 145, 253, 1);
+  background: #505ABC;
   left: 0;
   top: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 1);
@@ -62,7 +66,7 @@
 }
 .menuheader p {
   text-align: center;
-  color: rgba(255, 255, 255, 1);
+  color: #bBD3F9;
   padding: 0 0 2rem 0;
   font-weight: 600;
   font-size: 20px;
@@ -74,11 +78,11 @@
 }
 .menuheader input {
   padding: 0.8rem 4rem;
-  border: 1px solid rgba(22, 74, 121, 1);
+  /* border: 1px solid rgba(22, 74, 121, 1); */
   background: transparent;
   outline: none;
-  width: 50%;
-  border-style: dashed;
+  width: 70%;
+  /* border-style: dashed; */
   color: aliceblue;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;

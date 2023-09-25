@@ -1,5 +1,5 @@
 .footer{
-    background-color: rgba(37, 145, 253, 1);
+    background-color: #505ABC;
     display: grid;
     grid-template-columns: repeat(5,1fr);
     padding: 5rem;

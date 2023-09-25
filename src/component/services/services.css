@@ -14,7 +14,7 @@
     gap: 4px;
 }
 .servicesCatalog div{
-    border:1px solid  rgba(37, 145, 253, 1);
+    border:1px solid  #505ABC;
     text-align: left;
     padding: 2rem;
     border-radius: 1rem;
@@ -58,7 +58,7 @@
         display: none;
     }
     .servicesCatalog div{
-        border:1px solid  rgba(37, 145, 253, 1);
+        border:1px solid  #505ABC;
         text-align: left;
         padding: 2rem;
         border-radius: 1rem;
@@ -103,7 +103,7 @@
 } 
 @media only screen and (max-width: 500px){
     .servicesCatalog div{
-        border:1px solid  rgba(37, 145, 253, 1);
+        border:1px solid  #505ABC;
         text-align: left;
         padding: 2rem;
         border-radius: 1rem;
@@ -121,7 +121,7 @@
         display: block;
     }
     .servicesCatalog div{
-        border:1px solid  rgba(37, 145, 253, 1);
+        border:1px solid  #505ABC;
         text-align: left;
         /* padding: 2rem; */
         border-radius: 1rem;

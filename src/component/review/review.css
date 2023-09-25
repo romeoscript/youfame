@@ -59,10 +59,10 @@
     border-radius: 1px;
     cursor: pointer;
     background-color: transparent;
-    border: 1px solid rgba(37, 145, 253, 1)
+    border: 1px solid #505ABC
 }
 .pricesPacks:hover{
-    background-color:   rgba(37, 145, 253, 1);
+    background-color:   #505ABC;
     border-radius: 2rem;
     color: rgba(249, 249, 249, 1)!important;
 }
