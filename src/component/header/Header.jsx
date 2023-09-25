@@ -108,7 +108,7 @@ export default function Header() {
                 </motion.p>
 
                 <div className='input_container'>
-                    <FormControl sx={{ width: '40%' }}>
+                    <FormControl sx={{ width: { xs: '90%', sm: '40%' } }}>
                         <OutlinedInput
                             placeholder="Search video or paste link (youtube.com/watch? =xyz"
                             value={link}

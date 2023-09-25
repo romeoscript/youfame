@@ -121,6 +121,7 @@
     width: 30px;
     padding: 0.5rem;
   }
+  
 }
 @media only screen and (max-width: 600px) {
   .menuheader h1 {
@@ -128,7 +129,7 @@
   }
   .menuheader p {
     text-align: center;
-    color: rgba(255, 255, 255, 1);
+    /* color: rgba(255, 255, 255, 1); */
     padding: 0 0 2rem 0;
     font-size: 12px;
     font-weight: normal;
@@ -147,7 +148,7 @@
   }
   .menuheader p {
     text-align: center;
-    color: rgba(255, 255, 255, 1);
+    /* color: rgba(255, 255, 255, 1); */
     padding: 0 0 2rem 0;
   }
   .menuheader h2 {
@@ -167,11 +168,12 @@
   }
 
   .menuheader input {
-    width: 60%;
+  
     padding: 0.8rem 1rem;
   }
   .start {
     padding: 0.9rem 1rem;
+    display: none;
   }
 }
 @media only screen and (max-width: 300px) {
@@ -201,9 +203,7 @@
   /* .menuheader input::placeholder{
         font-size: 7px;
     } */
-  .start {
-    padding: 0.2rem 0.5rem;
-  }
+ 
 }
 
 aside {
