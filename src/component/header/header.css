@@ -5,13 +5,16 @@
   font-family: "Poppins";
 }
 .container {
-  background: #505ABC url(src/assets/background.svg) no-repeat;
+  background: #505abc url(src/assets/background.svg) no-repeat;
   background-position: 50% 50%;
   background-size: auto 100%;
   color: #fff;
   /* background-color: #505ABC; */
   height: 90vh;
   padding: 1rem;
+}
+.motion_p {
+  width: 65%;
 }
 .menu {
   display: flex;
@@ -21,7 +24,7 @@
   position: fixed;
   width: 100%;
   z-index: 100;
-  background: #505ABC;
+  background: #505abc;
   left: 0;
   top: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 1);
@@ -66,7 +69,7 @@
 }
 .menuheader p {
   text-align: center;
-  color: #bBD3F9;
+  color: #bbd3f9;
   padding: 0 0 2rem 0;
   font-weight: 600;
   font-size: 20px;
@@ -121,7 +124,6 @@
     width: 30px;
     padding: 0.5rem;
   }
-  
 }
 @media only screen and (max-width: 600px) {
   .menuheader h1 {
@@ -168,7 +170,6 @@
   }
 
   .menuheader input {
-  
     padding: 0.8rem 1rem;
   }
   .start {
@@ -203,7 +204,6 @@
   /* .menuheader input::placeholder{
         font-size: 7px;
     } */
- 
 }
 
 aside {
@@ -248,79 +248,80 @@ aside div h2 {
   font-weight: 100 !important;
 }
 
-
-.image_father{
+.image_father {
   width: 70%;
   margin: auto;
   padding: 1rem;
- 
 }
-.image_father span{
+.image_father span {
   font-weight: 100;
   color: blue;
   font-size: 14px;
 }
-.image{
+.image {
   width: 100%;
   border-radius: 10px;
   height: 250px;
   object-fit: cover;
 }
-.modal_details{
+.modal_details {
   font-weight: bold;
   font-size: 15px;
 }
-.modal_details span{
- 
-  color: blue!important;
-
+.modal_details span {
+  color: blue !important;
 }
- figure{
- display: flex;
-  align-items: center ;
-  justify-content: center;
-  flex-direction: column;
-  gap: 3%;
-}
-.view_Info{
-  display: flex;
-  align-items: center ;
-  justify-content: space-between;
-}
-
-@media (max-width: 550px) {
-  aside{
-    width: 90%;
-    display: block;
-  }
-  aside div{
-    width: 100%;
-    font-size: 12px;
-  }
-  aside div h2{
-    font-size: 12px!important;
-  }
-  aside div p{
-    width: 100%;
-    font-size: 9px!important;
-  }
-  aside img {
-    display: none!important;
-  }
-  .image_father{
-    width: 100%;
-    padding: 0;
-  }
-  .image{
-    height: 100px;
-  }
-  .vid_title, .modal_details{
-    font-size: 12px;
-  }
- figure div{
+figure {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
- }
+  gap: 3%;
+}
+.view_Info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 550px) {
+  aside {
+    width: 90%;
+    display: block;
+  }
+
+  .motion_p {
+    width: 100%;
+  }
+  aside div {
+    width: 100%;
+    font-size: 12px;
+  }
+  aside div h2 {
+    font-size: 12px !important;
+  }
+  aside div p {
+    width: 100%;
+    font-size: 9px !important;
+  }
+  aside img {
+    display: none !important;
+  }
+  .image_father {
+    width: 100%;
+    padding: 0;
+  }
+  .image {
+    height: 100px;
+  }
+  .vid_title,
+  .modal_details {
+    font-size: 12px;
+  }
+  figure div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 }

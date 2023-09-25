@@ -97,14 +97,16 @@ export default function Header() {
                     initial="hidden"
                     animate={mainControls}
                 >
-                    Top-Quality YouTube Engagement Services
+                    Skyrocket your YouTube Views with us!
                 </motion.h1>
                 <motion.p
                     variants={slideIn}
                     initial="hidden"
                     animate={mainControls}
+                    className='motion_p'
+                 
                 >
-                    Our offerings go beyond mere views. We provide YouTube subscribers, likes, genuine <br /> comments, and shares to enhance your channel's performance.
+                    With our services, you can reach your desired YouTube Views! And not just that, you get more subscribers, likes, shares and even comments! So what are you waiting for?!
                 </motion.p>
 
                 <div className='input_container'>
