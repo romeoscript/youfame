@@ -125,7 +125,7 @@ export default function Header() {
                     </FormControl>
 
 
-                    <button className='start' onClick={fetchVideoDetails}>START</button>
+                    {/* <button className='start' onClick={fetchVideoDetails}>START</button> */}
                     {info && <TransitionsModal setInfo={setInfo} video={videoDetails} />}
                     <section className='absolute_video'>
                         {videos.map((videoDetail, index) => (
