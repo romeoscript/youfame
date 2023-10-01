@@ -13,6 +13,11 @@
   height: 90vh;
   padding: 1rem;
 }
+.absolute_video{
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
 .motion_p {
   width: 65%;
 }
@@ -145,6 +150,9 @@
   }
 }
 @media only screen and (max-width: 500px) {
+  .container{
+    height: 60vh;
+  }
   .menuheader h1 {
     font-size: 20px;
   }
@@ -222,6 +230,7 @@ aside {
   background-color: white;
   color: black !important;
   padding: 0.5rem;
+  margin: 1rem auto;
   justify-content: space-between;
   /* align-items: center; */
 }

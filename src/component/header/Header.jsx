@@ -5,6 +5,8 @@ import FormControl from '@mui/material/FormControl';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import TransitionsModal from './Modal';
 import Skeleton from '@mui/material/Skeleton';
+import { InputAdornment } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 import { motion, useAnimation } from 'framer-motion';
 
 export default function Header() {
@@ -28,6 +30,11 @@ export default function Header() {
     };
 
     const fetchVideoDetails = () => {
+
+        if (!link.trim()) {
+            setError('Please enter a keyword or paste a YouTube link.');
+            return; // Exit the function if the input is empty
+        }
         const videoID = extractVideoID(link);
         const apiKey = 'AIzaSyDIf9X3nxHznmwhX1aLDx93_vyB4HAlIus';
         let apiUrl = '';
@@ -104,7 +111,7 @@ export default function Header() {
                     initial="hidden"
                     animate={mainControls}
                     className='motion_p'
-                 
+
                 >
                     With our services, you can reach your desired YouTube Views! And not just that, you get more subscribers, likes, shares and even comments! So what are you waiting for?!
                 </motion.p>
@@ -121,50 +128,62 @@ export default function Header() {
                                     setVideoDetails(null);
                                     setLoading(false);
                                     setError('');
-                                } else {
+                                }
+                            }}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter') {
                                     fetchVideoDetails();
                                 }
                             }}
+                            
+                            endAdornment={
+                                <InputAdornment position="end">
+                                    <SearchIcon cursor="pointer" onClick={fetchVideoDetails} />
+                                </InputAdornment>
+                            }
                         />
                     </FormControl>
 
+
                     <button className='start' onClick={fetchVideoDetails}>START</button>
                     {info && <TransitionsModal setInfo={setInfo} video={videoDetails} />}
-                    {videos.map((videoDetail, index) => (
-                        <motion.aside
-                            key={index}
-                            initial="hidden"
-                            animate="visible"
-                            variants={slideIn}
-                            onClick={() => {
-                                setVideoDetails(videoDetail);
-                                setInfo(true);
-                            }}
-                        >
-                            <img src={videoDetail.thumbnails.high.url} alt="" />
-                            <div>
-                                <h2>
-                                    {videoDetail.title.length > 70
-                                        ? videoDetail.title.substring(0, 70) + "..."
-                                        : videoDetail.title}
-                                </h2>
-                                <p>
-                                    {videoDetail.description.length > 100
-                                        ? videoDetail.description.substring(0, 100) + "..."
-                                        : videoDetail.description}
-                                </p>
-                            </div>
-                        </motion.aside>
-                    ))}
+                    <section className='absolute_video'>
+                        {videos.map((videoDetail, index) => (
+                            <motion.aside
+                                key={index}
+                                initial="hidden"
+                                animate="visible"
+                                variants={slideIn}
+                                onClick={() => {
+                                    setVideoDetails(videoDetail);
+                                    setInfo(true);
+                                }}
+                            >
+                                <img src={videoDetail.thumbnails.high.url} alt="" />
+                                <div>
+                                    <h2>
+                                        {videoDetail.title.length > 70
+                                            ? videoDetail.title.substring(0, 70) + "..."
+                                            : videoDetail.title}
+                                    </h2>
+                                    <p>
+                                        {videoDetail.description.length > 100
+                                            ? videoDetail.description.substring(0, 100) + "..."
+                                            : videoDetail.description}
+                                    </p>
+                                </div>
+                            </motion.aside>
+                        ))}
 
-                    {loading && <aside>
-                        <Skeleton variant="rounded" width={210} height={60} />
-                        <div>
-                            <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
-                            <Skeleton variant="rounded" width={'100%'} height={40} />
-                        </div>
-                    </aside>}
-                    {error && <p style={{ color: 'red' }}>{error}</p>}
+                        {loading && <aside>
+                            <Skeleton variant="rounded" width={210} height={60} />
+                            <div>
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="rounded" width={'100%'} height={40} />
+                            </div>
+                        </aside>}
+                        {error && <p style={{ color: 'red' }}>{error}</p>}
+                    </section>
                 </div>
             </div>
         </div>
