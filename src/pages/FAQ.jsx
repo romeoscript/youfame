@@ -1,25 +1,31 @@
 import React, { useState } from "react";
 import { BsChevronRight as ChevronDownIcon } from "react-icons/bs";
 import Footer from "../component/footer/Footer";
+import Navbar from "../component/header/Navbar";
 
 
 const faqs = [
     {
-        question: "What is React?",
-        answer:
-            "React is a JavaScript library for building user interfaces. It allows you to create reusable UI components and manage the state of your application efficiently.",
+      question: "What are YouTube Views?",
+      answer:
+        "YouTube views represent the number of times a video has been watched. They are crucial for increasing a video's visibility and credibility",
     },
     {
-        question: "What is Tailwind?",
-        answer:
-            "Tailwind is a utility-first CSS framework that allows you to quickly build custom designs without writing any CSS. It provides a set of pre-defined classes that you can use to style your HTML elements.",
+      question: "Are the views genuine?",
+      answer:
+        "Yes, we provide real, high-quality views from active YouTube users. We do not use fake or bot-generated views",
     },
     {
-        question: "How do I install React and Tailwind?",
-        answer:
-            "You can install React and Tailwind using npm or yarn. Here's an example command: npm install react tailwindcss",
+      question: "Customer Support?",
+      answer:
+        "Our customer support team is available 24/7 to assist you. You can contact us through email, social media, or our contact form.",
     },
-];
+    {
+      question: "Delivery Time?",
+      answer:
+        "The delivery time varies depending on the package you choose. Typically, views start increasing within hours of purchase and continue over the agreed-upon timeframe.",
+    },
+  ];
 
 function FAQ() {
     const [activeIndex, setActiveIndex] = useState(null);
@@ -30,13 +36,16 @@ function FAQ() {
 
     return (
         <>
-            <div className="text-white md:w-3/5 w-[90%] m-auto mt-[8rem] min-h-[100vh] bg-[green]">
-                <h2 className="text-white text-center text-3xl font-bold p-[2rem] ">Frequently Asked Questions</h2>
+            <div className="md:h-[30vh] h-[10vh] curtail">
+                <Navbar />
+            </div>
+            <div className="text-white md:w-3/5 w-[90%] m-auto mt-[3rem] text-[#505abc]">
+                <h2 className="text-[#505abc] text-center text-3xl font-bold p-[2rem] ">Frequently Asked Questions</h2>
                 {faqs.map((faq, index) => (
                     <div key={index} className=" py-4">
                         <button
                             onClick={() => handleClick(index)}
-                            className="flex justify-between border-l-8 rounded-sm border-[#FF7D00]  text-white items-center w-full px-4 py-2 text-lg font-medium text-left  focus:outline-none "
+                            className="flex justify-between border-l-8 rounded-sm border-[#FF7D00]  text-[#505abc] items-center w-full px-4 py-2 text-lg font-medium text-left  focus:outline-none "
                         >
                             <span>{faq.question}</span>
                             <ChevronDownIcon
@@ -45,7 +54,7 @@ function FAQ() {
                             />
                         </button>
                         {activeIndex === index && (
-                            <p className="mt-2 px-4 text-gray-500 w-4/5 p-[1.5rem] border border-white bg-gray-300 bg-opacity-5 backdrop-blur-md rounded-md">{faq.answer}</p>
+                            <p className="mt-2 px-4 text-gray-500 md:w-4/5 p-[1.5rem] border border-white bg-gray-300 bg-opacity-5 backdrop-blur-md rounded-md">{faq.answer}</p>
                         )}
                     </div>
                 ))}
