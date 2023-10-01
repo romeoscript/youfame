@@ -40,7 +40,8 @@ function FAQ() {
                 <Navbar />
             </div>
             <div className="text-white md:w-3/5 w-[90%] m-auto mt-[3rem] text-[#505abc]">
-                <h2 className="text-[#505abc] text-center text-3xl font-bold p-[2rem] ">Frequently Asked Questions</h2>
+            <h2 className="text-white text-center text-3xl font-bold p-[2rem] text-black ">Our Buy <span className="text-[#505abc]">YouTube Views</span> FAQs</h2>
+        
                 {faqs.map((faq, index) => (
                     <div key={index} className=" py-4">
                         <button

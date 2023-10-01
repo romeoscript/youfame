@@ -1,9 +1,10 @@
-import {useState, useEffect, useRef} from 'react'
+import { useState, useEffect, useRef } from 'react'
 import styled from "styled-components";
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from 'react-router-dom';
 
 const Headers = styled.header`
   display: flex;
@@ -241,16 +242,20 @@ const Navbar = () => {
                 </Logo>
                 <Nav>
 
-                    <a href="#home" onClick={(e) => scrollUp("home", e)}>
-                        Home
-                    </a>
-                    <a href="#about" onClick={(e) => scrollUp("about", e)}>
-                        FAQS
-                    </a>
 
-                    <a href="#contact" onClick={(e) => scrollUp("contact", e)}>
+                    <Link to='/' >
+                        Home
+                    </Link>
+                    <Link to='/faq' >
+                        FAQS
+                    </Link>
+
+                    <Link to='/contack' >
                         <Button>Contact Us</Button>
-                    </a>
+                    </Link>
+
+
+
                 </Nav>
                 <p className='not_show'> {click ? <CloseIcon clicked={click} onClick={() => setClick(!click)} /> : <MenuIcon clicked={click} onClick={() => setClick(!click)} />}
                 </p>
@@ -259,18 +264,17 @@ const Navbar = () => {
                 <MenuIcon />
                 </HamburgerBtn> */}
                 <MobileMenu clicked={click}>
-                    <a href="#home" onClick={(e) => handleClick("home", e)}>
+                    <Link to='/' >
                         Home
-                    </a>
-                    <a href="#about" onClick={(e) => handleClick("about", e)}>
-                        About Us
-                    </a>
-                    <a href="#services" onClick={(e) => handleClick("services", e)}>
-                        Services
-                    </a>
-                    <a href="#contact" onClick={(e) => handleClick("contact", e)}>
+                    </Link>
+                    <Link to='/faq' >
+                        FAQS
+                    </Link>
+
+                    <Link to='/contack' >
                         <Button>Contact Us</Button>
-                    </a>
+                    </Link>
+
                 </MobileMenu>
             </Headers>
         </div>
