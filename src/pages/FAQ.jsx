@@ -30,7 +30,7 @@ function FAQ() {
 
     return (
         <>
-            <div className="text-white md:w-3/5 w-[90%] m-auto mt-[8rem] min-h-[100vh] ">
+            <div className="text-white md:w-3/5 w-[90%] m-auto mt-[8rem] min-h-[100vh] bg-[green]">
                 <h2 className="text-white text-center text-3xl font-bold p-[2rem] ">Frequently Asked Questions</h2>
                 {faqs.map((faq, index) => (
                     <div key={index} className=" py-4">
