@@ -62,7 +62,7 @@ export default function Body() {
             </motion.div>
 
             <motion.h1 className='whyUs_header' ref={ref4} initial="hidden" animate={controls4} variants={fadeIn}>
-                Why Use YouFame?
+                Why Use Promoteclips?
             </motion.h1>
 
             <div className='whyUs'>

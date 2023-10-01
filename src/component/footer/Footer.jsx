@@ -6,7 +6,7 @@ export default function Footer() {
     <div>
         <div className="footer">
             <div>
-                <h2>Youfame</h2>
+                <h2>Promoteclips</h2>
                 <p>@2023</p>
                 <select name="cars" id="cars">
                     <option value="volvo">English</option>
@@ -36,7 +36,7 @@ export default function Footer() {
                 <h2>Support</h2>
                 <ol>
                     <li><a href="#">+234 805 354 23</a></li>
-                    <li><a href="#">info@youfame.com</a></li>
+                    <li><a href="#">info@Promoteclips.com</a></li>
                     <li><a href="#">Contact form</a></li>
                     <li><a href="#">Help Center</a></li>
                     <li><a href="#">Connect with ouframe</a></li>
