@@ -36,6 +36,10 @@
   grid-template-columns: repeat(3, 1fr);
   text-align: center;
 }
+.whyUs img {
+
+  margin: auto;
+}
 .whyUs_header {
   text-align: center;
   align-items: center;
@@ -150,6 +154,7 @@
   }
   .whyUs img {
     width: 40px;
+    margin: auto;
   }
   .whyUs div p {
     text-align: center;
