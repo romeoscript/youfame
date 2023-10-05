@@ -10,10 +10,31 @@ import CreditCardIcon from '@mui/icons-material/CreditCard';
 import PaidIcon from '@mui/icons-material/Paid';
 import Stack from '@mui/material/Stack';
 import './header.css'
+import { loadStripe } from '@stripe/stripe-js';
+import StripeButton from './StripeBTN';
+
+const stripePromise = loadStripe('pk_test_51NxI2RCJIXj2AddOrPt260rtvsuDU45IZovsOMrQ8u4grsKZehUSH7fkIJTOtdkECN2rScLzLjHbqGyjOEbOZkGy00kkmtzLFk');
+
 
 
 
 const modalStyle = () => {
+    const handleCheckout = async () => {
+        // Call your vanilla app's API endpoint to create a Stripe session
+        const response = await fetch('http://localhost:5123/create-checkout-session', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        const { sessionId } = await response.json();
+    
+        // Redirect to the vanilla app for payment with the session ID
+        window.location.href = `http://127.0.0.1:5500/index.html/checkout?sessionId=${sessionId}`;
+      };
+    
+
+
     const width = window.innerWidth < 768 ? '90%' : '50%';
     return {
         position: 'absolute',
@@ -159,9 +180,10 @@ export default function TransitionsModal({ setInfo, video }) {
                         <figure>
                             <h3>TOTAL= $15</h3>
                             <div >
-                                <Button variant="outlined" sx={{margin:'0.5rem 1rem'}} startIcon={<CreditCardIcon />}>
+                                <StripeButton />
+                                {/* <Button onClick={handleCheckout} variant="outlined" sx={{margin:'0.5rem 1rem'}} startIcon={<CreditCardIcon />} >
                                     Credit Card
-                                </Button>
+                                </Button> */}
                                 <Button variant="contained" startIcon={<PaidIcon />}>
                                     Cryptocurrency
                                 </Button>
