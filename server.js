@@ -7,12 +7,20 @@ const stripe = stripePackage('sk_test_51NxI2RCJIXj2AddOi62fWEXIOM1gS3LOiVxgXhrNj
 const app = express();
 const PORT = 5000;
 
-app.use(cors()); // To handle CORS issues
-app.use(express.json()); // To parse JSON requests
+app.use(cors()); 
+app.use(express.json()); 
+
+let retainedAmount = null; // This variable will retain the amount value
 
 app.post('/create-stripe-session', async (req, res) => {
-  // Hardcoded amount for testing
-  const amount = 1000; // Represents $10.00
+  const amount = req.body.amount ? req.body.amount * 100 : retainedAmount;
+
+  if (!amount) {
+    return res.status(400).json({ error: 'Amount is required' });
+  }
+
+  retainedAmount = amount; // Store the amount value
+  console.log(retainedAmount);
 
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],

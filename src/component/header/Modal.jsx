@@ -111,7 +111,12 @@ export default function TransitionsModal({ setInfo, video }) {
        
     }
 
-    console.log(video.thumbnails.default.url);
+const likes = data.likesSlider * 2
+const sub = data.subscribersSlider * 0.1
+const view = data.viewsSlider * 0.2
+
+
+const total =  view + sub + likes
     return (
         <div className='modal_figure' >
             <Modal
@@ -138,7 +143,7 @@ export default function TransitionsModal({ setInfo, video }) {
 
                             <p className='view_Info'>
                                 <span>{data.viewsSlider} views</span>
-                                <span>${data.viewsSlider * 1.3}</span>
+                                <span>${view}</span>
                             </p>
                             <PrettoSlider
                                 valueLabelDisplay="auto"
@@ -151,7 +156,7 @@ export default function TransitionsModal({ setInfo, video }) {
                             />
                             <p className='view_Info'>
                                 <span>{data.likesSlider} Likes</span>
-                                <span>${data.likesSlider * 2}</span>
+                                <span>${likes}</span>
                             </p>
                             <PrettoSlider
                                 valueLabelDisplay="auto"
@@ -164,7 +169,7 @@ export default function TransitionsModal({ setInfo, video }) {
                             />
                             <p className='view_Info'>
                                 <span>{data.subscribersSlider}Subscribers</span>
-                                <span>${data.subscribersSlider * 0.4}</span>
+                                <span>${sub}</span>
                             </p>
                             <PrettoSlider
                                 valueLabelDisplay="auto"
@@ -178,9 +183,9 @@ export default function TransitionsModal({ setInfo, video }) {
                         </Box>
                         <h2 className='modal_details'>You will receive <span>{data.viewsSlider}</span> views, <span>{data.likesSlider}</span> likes, and <span>{data.subscribersSlider}</span> subscribers</h2>
                         <figure>
-                            <h3>TOTAL= $15</h3>
+                            <h3>TOTAL= ${total}</h3>
                             <div >
-                                <StripeButton />
+                                <StripeButton amount={total}/>
                                 {/* <Button onClick={handleCheckout} variant="outlined" sx={{margin:'0.5rem 1rem'}} startIcon={<CreditCardIcon />} >
                                     Credit Card
                                 </Button> */}
