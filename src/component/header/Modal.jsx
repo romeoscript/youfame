@@ -6,7 +6,7 @@ import Fade from '@mui/material/Fade';
 import Slider, { SliderThumb } from '@mui/material/Slider';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
-import CreditCardIcon from '@mui/icons-material/CreditCard';
+
 import PaidIcon from '@mui/icons-material/Paid';
 import Stack from '@mui/material/Stack';
 import './header.css'
