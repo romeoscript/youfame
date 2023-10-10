@@ -5,13 +5,11 @@ import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Slider, { SliderThumb } from '@mui/material/Slider';
 import { styled } from '@mui/material/styles';
-import Button from '@mui/material/Button';
-
-import PaidIcon from '@mui/icons-material/Paid';
 import Stack from '@mui/material/Stack';
 import './header.css'
 import { loadStripe } from '@stripe/stripe-js';
 import StripeButton from './StripeBTN';
+import PaypalBtn from './PaypalBtn';
 
 const stripePromise = loadStripe('pk_test_51NxI2RCJIXj2AddOrPt260rtvsuDU45IZovsOMrQ8u4grsKZehUSH7fkIJTOtdkECN2rScLzLjHbqGyjOEbOZkGy00kkmtzLFk');
 
@@ -22,17 +20,17 @@ const modalStyle = () => {
     const handleCheckout = async () => {
         // Call your vanilla app's API endpoint to create a Stripe session
         const response = await fetch('http://localhost:5123/create-checkout-session', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
         });
         const { sessionId } = await response.json();
-    
+
         // Redirect to the vanilla app for payment with the session ID
         window.location.href = `http://127.0.0.1:5500/index.html/checkout?sessionId=${sessionId}`;
-      };
-    
+    };
+
 
 
     const width = window.innerWidth < 768 ? '90%' : '50%';
@@ -108,15 +106,15 @@ export default function TransitionsModal({ setInfo, video }) {
     const handleClose = () => {
         setInfo(false)
         setOpen(false);
-       
+
     }
 
-const likes = data.likesSlider * 2
-const sub = data.subscribersSlider * 0.1
-const view = data.viewsSlider * 0.2
+    const likes = data.likesSlider * 2
+    const sub = data.subscribersSlider * 0.1
+    const view = data.viewsSlider * 0.2
 
 
-const total =  view + sub + likes
+    const total = view + sub + likes
     return (
         <div className='modal_figure' >
             <Modal
@@ -185,13 +183,9 @@ const total =  view + sub + likes
                         <figure>
                             <h3>TOTAL= ${total}</h3>
                             <div >
-                                <StripeButton amount={total}/>
-                                {/* <Button onClick={handleCheckout} variant="outlined" sx={{margin:'0.5rem 1rem'}} startIcon={<CreditCardIcon />} >
-                                    Credit Card
-                                </Button> */}
-                                <Button variant="contained" startIcon={<PaidIcon />}>
-                                    Cryptocurrency
-                                </Button>
+                                <StripeButton amount={total} />
+                                
+                                <PaypalBtn amount={total} />
                             </div>
                         </figure>
                     </Box>

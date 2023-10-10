@@ -1413,6 +1413,25 @@
     "@nodelib/fs.scandir" "2.1.5"
     "fastq" "^1.6.0"
 
+"@paypal/checkout-server-sdk@^1.0.3":
+  "integrity" "sha512-UEdq8akEdMz0Vs4qoQFU2gMp8PpyE/HKyMwiZuK4vIWUKl8jfd1fWKjQN5cDFm9NkFUIp5U7h++rdMOVj9WMNA=="
+  "resolved" "https://registry.npmjs.org/@paypal/checkout-server-sdk/-/checkout-server-sdk-1.0.3.tgz"
+  "version" "1.0.3"
+  dependencies:
+    "@paypal/paypalhttp" "^1.0.1"
+
+"@paypal/payouts-sdk@^1.1.1":
+  "integrity" "sha512-m8hICfBjrf8WKXYGt84wVS7YLa+exB/HQwItn33ArmDDH1Hno0vqwwE2oY7TNTuKcBpxSE75D9KMrtNlVN9kZQ=="
+  "resolved" "https://registry.npmjs.org/@paypal/payouts-sdk/-/payouts-sdk-1.1.1.tgz"
+  "version" "1.1.1"
+  dependencies:
+    "@paypal/paypalhttp" "^1.0.1"
+
+"@paypal/paypalhttp@^1.0.1":
+  "integrity" "sha512-DC7AHxTT7drF6dUi3YaFdPVuT15sIkpD5H2eHmdtFgxM4UanS1o1ZDfMhR9mpxd8o+X6pz2r+EZVRRq+n1cssQ=="
+  "resolved" "https://registry.npmjs.org/@paypal/paypalhttp/-/paypalhttp-1.0.1.tgz"
+  "version" "1.0.1"
+
 "@popperjs/core@^2.11.8":
   "integrity" "sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A=="
   "resolved" "https://registry.npmjs.org/@popperjs/core/-/core-2.11.8.tgz"
