@@ -166,7 +166,7 @@ export default function TransitionsModal({ setInfo, video }) {
                         <h2 className='modal_details'>You will receive <span>{data.viewsSlider}</span> views, <span>{data.likesSlider}</span> likes, and <span>{data.subscribersSlider}</span> subscribers</h2>
                         <figure>
                             <h3>TOTAL= ${total}</h3>
-                            <div >
+                            <div className='md:flex items-center justify-center ' >
                                 <StripeButton amount={total} />
                                 
                                 <PaypalBtn amount={total} />

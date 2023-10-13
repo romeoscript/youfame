@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import './paystyle.css'
 
 function PayPalButton({ amount }) {
     const paypalRef = useRef();
@@ -7,14 +8,15 @@ function PayPalButton({ amount }) {
         let paypalButtons;
         if (window.paypal) {
 
-
             paypalButtons = window.paypal.Buttons({
                 style: {
-                    layout: 'vertical',  // Or 'horizontal'
-                    color: 'gold',
+                    layout: 'vertical',
+                    color: 'white',
                     shape: 'rect',
-                    label: 'paypal'
+                  
+             
                 },
+                fundingSource: window.paypal.FUNDING.PAYPAL,  // Only show PayPal as a funding source
                 createOrder: (data, actions) => {
                     return actions.order.create({
                         purchase_units: [{
@@ -46,7 +48,7 @@ function PayPalButton({ amount }) {
     }, [amount]);
 
     return (
-        <div ref={paypalRef}></div>
+        <div className='flex border-2 border-red' ref={paypalRef}></div>
     );
 }
 
