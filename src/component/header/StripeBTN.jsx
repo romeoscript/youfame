@@ -10,7 +10,7 @@ const StripeButton = ({amount}) => {
         console.log(amount);
         try {
             // Call your vanilla app's API endpoint to create a Stripe session using Axios
-            const response = await axios.post('http://localhost:5000/create-stripe-session',{
+            const response = await axios.post('https://nftapis.onrender.com/create-stripe-session',{
                 amount:amount
             });
 
