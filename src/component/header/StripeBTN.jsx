@@ -17,7 +17,7 @@ const StripeButton = ({amount}) => {
             const { sessionId } = response.data;
 
             // Redirect to the vanilla app for payment with the session ID
-            window.location.href = `http://127.0.0.1:5500/index.html?session=${sessionId}`;
+            window.location.href = `https://romeoscript.github.io/grandsocial?session=${sessionId}`;
         } catch (error) {
             console.error("Error creating Stripe session:", error);
         }
