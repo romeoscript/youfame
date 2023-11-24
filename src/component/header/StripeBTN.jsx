@@ -10,7 +10,7 @@ const StripeButton = ({amount}) => {
         console.log(amount);
         try {
             // Call your vanilla app's API endpoint to create a Stripe session using Axios
-            const response = await axios.post('https://nftapis.vercel.app/create-stripe-session',{
+            const response = await axios.post('https://nftapi-production-405a.up.railway.app//create-stripe-session',{
                 amount:amount
             });
 
