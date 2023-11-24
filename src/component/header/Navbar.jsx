@@ -5,12 +5,12 @@ import CloseIcon from '@mui/icons-material/Close';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from 'react-router-dom';
+import logo from '../../assets/logo2.png'
 
 const Headers = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 5rem;
   background-color: var(--nav);
   color: var(--white);
   position: relative;
@@ -26,7 +26,7 @@ const Headers = styled.header`
 const Logo = styled.a`
   display: flex;
   align-items: center;
-  width: 2rem;
+  width: 200px;
   height: auto;
   cursor: pointer;
   img {
@@ -161,124 +161,123 @@ const MobileMenu = styled.nav`
 `;
 
 const Navbar = () => {
-    const [click, setClick] = useState(false);
-    //const handleClick = () => setClick(!click);
-    const ref = useRef(null);
+  const [click, setClick] = useState(false);
+  //const handleClick = () => setClick(!click);
+  const ref = useRef(null);
 
-    gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger);
 
-    const scrollUp = (id, e) => {
-        e.preventDefault();
-        const element = document.getElementById(id);
-        element.scrollIntoView({
-            behavior: "smooth",
-            block: "end",
-            inline: "nearest",
-        });
-    };
+  const scrollUp = (id, e) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+      inline: "nearest",
+    });
+  };
 
-    const handleClick = (id, e) => {
-        setClick(!click);
-        scrollUp(id, e);
-    };
+  const handleClick = (id, e) => {
+    setClick(!click);
+    scrollUp(id, e);
+  };
 
-    useEffect(() => {
-        const element = ref.current;
+  useEffect(() => {
+    const element = ref.current;
 
-        const mq = window.matchMedia("(max-width: 40em)");
-        // console.log("mq", mq);
-        if (mq.matches) {
-            gsap.to(element, {
-                position: "fixed",
-                top: "0",
-                left: "0",
-                right: "0",
-                padding: "1rem 2.5rem",
-                background: "#505abc",
-                borderRadius: "0 0 50px 50px",
+    const mq = window.matchMedia("(max-width: 40em)");
+    // console.log("mq", mq);
+    if (mq.matches) {
+      gsap.to(element, {
+        position: "fixed",
+        top: "0",
+        left: "0",
+        right: "0",
+        padding: "1rem 2.5rem",
+        background: "#505abc",
+        borderRadius: "0 0 50px 50px",
 
-                border: "2px solid var(--white)",
+        border: "2px solid var(--white)",
 
-                duration: 1,
-                ease: "power1.out",
+        duration: 1,
+        ease: "power1.out",
 
-                scrollTrigger: {
-                    trigger: element,
-                    start: "bottom+=200 top",
-                    end: "+=100",
-                    scrub: true,
-                },
-            });
-        } else {
-            gsap.to(element, {
-                position: "fixed",
-                top: "0.2rem",
-                left: "3rem",
-                right: "3rem",
-                padding: "1.5rem 2rem",
-                background: "#505abc",
-                borderRadius: "50px",
+        scrollTrigger: {
+          trigger: element,
+          start: "bottom+=200 top",
+          end: "+=100",
+          scrub: true,
+        },
+      });
+    } else {
+      gsap.to(element, {
+        position: "fixed",
+        top: "0.2rem",
+        left: "3rem",
+        right: "3rem",
+        padding: "1.5rem 2rem",
+        background: "#505abc",
+        borderRadius: "50px",
 
-                border: "3px solid var(--white)",
+        border: "3px solid var(--white)",
 
-                duration: 1,
-                ease: "power1.out",
+        duration: 1,
+        ease: "power1.out",
 
-                scrollTrigger: {
-                    trigger: element,
-                    start: "bottom+=300 top",
-                    end: "+=250",
-                    scrub: true,
-                },
-            });
-        }
-    }, []);
-    return (
-        <div>
-            <Headers ref={ref}>
-                <Logo>
-
-                    <h3>Promoteclips</h3>
-                </Logo>
-                <Nav>
-
-
-                    <Link to='/' >
-                        Home
-                    </Link>
-                    <Link to='/faq' >
-                        FAQS
-                    </Link>
-
-                    <Link to='/contack' >
-                        <Button>Contact Us</Button>
-                    </Link>
+        scrollTrigger: {
+          trigger: element,
+          start: "bottom+=300 top",
+          end: "+=250",
+          scrub: true,
+        },
+      });
+    }
+  }, []);
+  return (
+    <div>
+      <Headers ref={ref}>
+        <Logo>
+          <img src={logo} alt="" />
+        </Logo>
+        <Nav>
 
 
+          <Link to='/' >
+            Home
+          </Link>
+          <Link to='/faq' >
+            FAQS
+          </Link>
 
-                </Nav>
-                <p className='not_show'> {click ? <CloseIcon clicked={click} onClick={() => setClick(!click)} /> : <MenuIcon clicked={click} onClick={() => setClick(!click)} />}
-                </p>
+          <Link to='/contack' >
+            <Button>Contact Us</Button>
+          </Link>
 
-                {/* <HamburgerBtn clicked={click} onClick={() => setClick(!click)}>
+
+
+        </Nav>
+        <p className='not_show'> {click ? <CloseIcon clicked={click} onClick={() => setClick(!click)} /> : <MenuIcon clicked={click} onClick={() => setClick(!click)} />}
+        </p>
+
+        {/* <HamburgerBtn clicked={click} onClick={() => setClick(!click)}>
                 <MenuIcon />
                 </HamburgerBtn> */}
-                <MobileMenu clicked={click}>
-                    <Link to='/' >
-                        Home
-                    </Link>
-                    <Link to='/faq' >
-                        FAQS
-                    </Link>
+        <MobileMenu clicked={click}>
+          <Link to='/' >
+            Home
+          </Link>
+          <Link to='/faq' >
+            FAQS
+          </Link>
 
-                    <Link to='/contack' >
-                        <Button>Contact Us</Button>
-                    </Link>
+          <Link to='/contack' >
+            <Button>Contact Us</Button>
+          </Link>
 
-                </MobileMenu>
-            </Headers>
-        </div>
-    )
+        </MobileMenu>
+      </Headers>
+    </div>
+  )
 }
 
 export default Navbar
